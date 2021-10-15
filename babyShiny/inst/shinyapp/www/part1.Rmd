@@ -1,0 +1,72 @@
+---
+output: 
+  html_document:
+    theme: 'flatly'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Prétraitement des données
+
+## 1. Tri des variables explicatives
+
+Le jeu de données comporte des colonnes qui ne serviront pas à l'analyse. Les variables correspondantes concernent par exemple des données qui ne seront connus qu'à posteriori de la naissance du bébé.
+
+Voici une vue d'ensemble des colonnes du jeu de données.
+```{r}
+colnames(data)
+```
+
+Nous décidons de supprimer les variables suivantes :
+
+- Nind: numérotation de l'individu statistique
+
+- JourNaiss : jour de la naissance (lundi, mardi, mercredi)
+
+- PoidsBB : poids du bébé à la naissance
+
+- TailleBB : taille du bébé à la naissance
+
+- PoidsPlacenta : poids du placenta
+
+- ModeTravail 
+
+
+```{r col}
+data = data[,-c(1,3:9,11,15,22,24:27)]
+colnames(data)
+```
+
+Les 5 variables ont été retirées du jeu de données.
+
+## 2. Gestion des valeurs manquantes
+Nous devons à présent gérer les valeurs manquantes du jeu de données.
+```{r}
+sum(is.na(data))
+```
+
+Supprimons ces `r sum(is.na(data))` valeurs manquantes avec la commande suivante :
+
+```{r}
+data = na.omit(data)
+sum(is.na(data))
+```
+
+## 3. Modalités de la variable réponse
+
+Etudions les modalités de la variable réponse : ModeAccouc
+
+```{r}
+summary(data$ModeAccouc)
+```
+
+Supprimons la modalité "Autre", présente en trop faible effectif dans les données.
+
+```{r}
+data = data[data$ModeAccouc!='Autre',]
+data$ModeAccouc = droplevels(data$ModeAccouc)
+
+summary(data$ModeAccouc)
+```

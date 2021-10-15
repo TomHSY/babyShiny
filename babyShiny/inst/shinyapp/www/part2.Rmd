@@ -1,0 +1,45 @@
+---
+output: 
+  html_document:
+    theme: 'flatly'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+``` {r ignore, include=FALSE}
+data = data[,-c(1,3:9,11,15,22,24:27)]
+data = na.omit(data)
+data = data[data$ModeAccouc!='Autre',]
+data$ModeAccouc = droplevels(data$ModeAccouc)
+```
+
+## Construction d'un premier modèle
+
+Utilisons la fonction multinom du package nnet pour construire un premier modèle de régression logistique multinomiale.
+Dans un premier temps, la variable ModeAccouc est expliquée par toutes les autres variables du jeu de données (modèle complet).
+
+```{r}
+mod = multinom(ModeAccouc~., data=data)
+```
+
+
+## Test du modèle global
+
+Mais ce modèle complet est-il pertinent ? Peut-être les 22 variables explicatives ne le sont pas réellement, et que le mode d'accouchement n'a rien à voir avec elles. 
+
+Rassurons-nous en testant l'hypothèse nulle, lié au modèle constant.
+
+```{r}
+#construction du modèle nul/constant
+mod.null = multinom(ModeAccouc~1, data=data)
+
+#test du rapport de déviance des deux modèles
+anova(mod,mod.null,test="Chisq")
+```
+
+La table nous montre que le test du chi2 présente une p-value de près de 0. On conclut donc que le modèle complet est pertinent.
+
+
+

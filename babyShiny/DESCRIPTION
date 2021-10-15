@@ -1,0 +1,49 @@
+Package: babyShiny
+Type: Package
+Title: Shiny app - study of newborn's birth data : visualisation and modelling
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "Lucille",
+           family = "CARADEC",
+           role = c("aut"),
+           email = "lucille.caradec@gmail.com"),
+    person(given = "Claire",
+           family = "GIRAUD",
+           role = c("aut"),
+           email = "giraud.claire.98@gmail.com"),
+    person(given = "Tom-Hadrian",
+           family = "SY",
+           role = c("aut", "cre"),
+           email = "tom-hadrian.sy@orange.fr"))
+Description: This package launches a shiny app, allowing the study of a dataset.
+    The dataset contains babies' birth data. We aimed at getting a clear preliminary
+    visualisation of the data, then tried to model the Y variable "type of labour",
+    selectioning the most relevant variables. Finally, we offered the user the
+    opportunity to build its own customed model and predict new data with it.
+    This work was realised as part of our end-of-course project (Master 2 
+    Datascience, R Programming course).
+Imports:
+    shiny (>= 1.6.0),
+    shinyjs (>= 2.0.0),
+    shinythemes (>= 1.2.0),
+    ggplot2 (>= 3.3.5),
+    dplyr (>= 1.0.7),
+    markdown (>= 1.1),
+    knitr (>= 1.33),
+    graphics (>= 4.1.0),
+    FactoMineR (>= 2.4),
+    devtools (>= 2.4.2),
+    factoextra (>= 1.0.7),
+    cowplot (>= 1.1.1),
+    nnet (>= 7.3-16),
+    RcmdrMisc (>= 2.7-1),
+    rpart (>= 4.1-15),
+    rpart.plot (>= 3.1.0),
+    randomForest (>= 4.6-14),
+    pls (>= 2.8-0),
+    class (>= 7.3-19),
+    caret (>= 6.0-89)
+License: Opensource package
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2

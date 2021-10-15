@@ -1,0 +1,43 @@
+---
+output: 
+  html_document:
+    theme: 'flatly'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Bienvenue dans notre application Rshiny ! 
+
+Vous disposez ici d'un jeu de données contenant des informations sur différents bébés et leurs parents.
+Nous cherchons à prédire **quel sera le mode d'accouchement de futures mères** en fonction de différents paramètres concernant les parents comme leur âge ou le nombre d'enfants de la mère.
+
+<br>
+<center>
+
+![](image_bebe.jpg){width=40%}
+
+
+</center>
+<br>
+
+### Structure de l’application Rshiny
+
+L’application est composée de 4 volets distincts.
+
+•	Le premier volet est le volet "Accueil" dans lequel vous êtes actuellement.
+
+•	Le deuxième : "Exploration des données" vous permet de regarder et explorer le jeu de données (boxplot, analyses factorielles, etc.).
+
+Les deux volets suivants permettent de prédire la variable *ModeAccouc* pour le mode d'accouchement.
+
+•	Le troisième volet étudie les possibilités de modélisation des données, et détermine quelles variables seraient de bons prédicteurs.
+
+•	Le quatrième volet est un modèle personnalisé qui vous permet de rentrer vos propres paramètres, et de prédire le mode d'accouchement de la femme.
+
+
+**Pour commencer rendez-vous dans l'onglet «  Exploration des données » !**
+
+<br>
+
